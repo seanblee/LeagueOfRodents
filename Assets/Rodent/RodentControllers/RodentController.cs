@@ -30,6 +30,8 @@ public class RodentController : MonoBehaviour
         {
             rodentAgent.SetDestination(GetPointUnderCursor());
         }
+
+        var action = actionQueue.Dequeue();
     }
 
     private Vector3 GetPointUnderCursor()
