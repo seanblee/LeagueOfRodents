@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class Rat : IRodent
+public class Rat : MonoBehaviour, IRodent
 {
     private StatSheet statSheet;
 
@@ -19,9 +19,9 @@ public class Rat : IRodent
 
     private float movementSpeed;
 
-    private float expToLevelUp;
+    private int expToLevelUp;
 
-    private float expCurrent;
+    private int expCurrent;
 
     private bool isDead;
 
@@ -61,12 +61,12 @@ public class Rat : IRodent
         }
     }
 
-    public void GainExp(float exp)
+    public void GainExp(int exp)
     {
         if (expCurrent >= expToLevelUp)
         {
             LevelUp();
-            float residualXp = expCurrent - expToLevelUp;
+            int residualXp = expCurrent - expToLevelUp;
             expCurrent = residualXp;
         }
         this.expCurrent += exp;

@@ -5,9 +5,7 @@ using UnityEngine.AI;
 
 public class RodentController : MonoBehaviour
 {
-    public IRodent rodent { get; set; }
-
-    private Queue<string> actionQueue;
+    public IRodent rodent;
 
     public Camera rodentCamera;
 
@@ -22,6 +20,11 @@ public class RodentController : MonoBehaviour
         rodentAgent = GetComponentInParent<NavMeshAgent>();
     }
 
+    private void Start()
+    {
+        rodent = this.GetComponent<IRodent>();
+    }
+
     void Update()
     {
         rodentAgent.speed = rodent.GetMovement();
@@ -30,8 +33,6 @@ public class RodentController : MonoBehaviour
         {
             rodentAgent.SetDestination(GetPointUnderCursor());
         }
-
-        var action = actionQueue.Dequeue();
     }
 
     private Vector3 GetPointUnderCursor()

@@ -27,9 +27,9 @@ public class RodentStatBarController : MonoBehaviour
 
     void Start()
     {
+        rodent = this.transform.parent.GetComponent<IRodent>();
+
         mainCameraRotation = Camera.main.transform.rotation;
-        rodent = GetComponentInParent<RodentController>().rodent;
-        
         textMesh = GameObject.Find("Username").GetComponent<TextMeshProUGUI>();
         healthBar = GameObject.Find("UserHealthBar").GetComponent<Image>();
         expBar = GameObject.Find("UserExpBar").GetComponent<Image>();

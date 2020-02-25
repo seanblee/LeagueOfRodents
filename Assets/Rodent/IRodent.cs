@@ -4,7 +4,7 @@
 
     void TakeDamage(float damage);
 
-    void GainExp(float exp);
+    void GainExp(int exp);
 
     int GetCurrentLevel();
 
