@@ -1,0 +1,12 @@
+{
+    "name": "Rat",
+    "description": "Rats are various medium-sized, long-tailed rodents. Species of rats are found throughout the order Rodentia, but stereotypical rats are found in the genus Rattus.",
+    "baseHealth": 100,
+    "baseAttackDamage": 5,
+    "baseAttackSpeed": 5,
+    "baseMovementSpeed": 5,
+    "healthPerLevel": 10,
+    "attackDamagePerLevel": 2,
+    "attackSpeedPerLevel": 2,
+    "movementSpeedPerLevel": 0
+}
