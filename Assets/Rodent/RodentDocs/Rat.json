@@ -4,6 +4,7 @@
     "baseHealth": 100,
     "baseAttackDamage": 5,
     "baseAttackSpeed": 5,
+	"baseAttackRange": 10,
     "baseMovementSpeed": 5,
     "healthPerLevel": 10,
     "attackDamagePerLevel": 2,

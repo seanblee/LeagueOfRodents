@@ -17,6 +17,8 @@ public class Rodent : Entity
 
     public float attackSpeed;
 
+    public float attackRange;
+
     public float movementSpeed;
 
     // temp, todo: define exp to level up in parent 
@@ -46,6 +48,11 @@ public class Rodent : Entity
     public virtual void ExecuteAction(Action action)
     {
 
+    }
+
+    public void ClearQueue()
+    {
+        this.actionQueue = new Queue<Action>();
     }
 
     public void LevelUp()

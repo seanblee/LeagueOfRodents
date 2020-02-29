@@ -22,9 +22,6 @@ public class SpawnController : MonoBehaviour
     {
         GameObject spawnRodent = Instantiate(rodentPrefab, new Vector3(0,0,0), Quaternion.identity);
 
-        var controller = spawnRodent.AddComponent(typeof(RodentController));
-        Camera.main.GetComponent<CameraController>().player = spawnRodent.transform;
-
         switch (rodentType)
         {
             case RodentType.Rat:
@@ -32,5 +29,8 @@ public class SpawnController : MonoBehaviour
                 rat.Team = Team.Red;
                 break;
         }
+
+        var controller = spawnRodent.AddComponent(typeof(RodentController));
+        Camera.main.GetComponent<CameraController>().player = spawnRodent.transform; 
     }
 }
