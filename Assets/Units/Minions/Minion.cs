@@ -50,7 +50,7 @@ public class Minion : Unit
         if (this.minionType == MinionType.Melee && distToEnemy <= attackRange)
         {
             // RAVAGE
-            DealDamage(enemy);
+            DealDamage(enemy); // TODO: implement attack speed
         }
         else
         {
