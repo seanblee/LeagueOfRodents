@@ -21,7 +21,8 @@ public class SpawnController : MonoBehaviour
     void SpawnRodent(RodentType rodentType)
     {
         GameObject spawnRodent = Instantiate(rodentPrefab, new Vector3(0,0,0), Quaternion.identity);
-        spawnRodent.AddComponent(typeof(RodentController));
+        var rodent = spawnRodent.AddComponent(typeof(RodentController)) as Unit;
+        rodent.team = Team.Red;
 
         Camera.main.GetComponent<CameraController>().player = spawnRodent.transform;
 

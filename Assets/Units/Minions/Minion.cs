@@ -10,7 +10,6 @@ public enum MinionType
 
 public class Minion : Unit
 {
-    private Team currTeam;
     private MinionType minionType;
 
     void Start()
@@ -26,12 +25,12 @@ public class Minion : Unit
 
     public Team GetTeam()
     {
-        return currTeam;
+        return this.team;
     }
 
     public void SetTeam(Team team)
     {
-        currTeam = team;
+        this.team = team;
     }
 
     public MinionType GetMinionType()
