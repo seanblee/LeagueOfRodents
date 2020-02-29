@@ -31,7 +31,7 @@ public class GenericHealthBar : MonoBehaviour
             healthBar.transform.localScale = Vector3.zero;
         }
 
-        if(currentHealth <= 0)
+        if(unit.isDead)
         {
             Destroy(unit.gameObject);
         }
