@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 683885725493858425}
   - component: {fileID: 683885725493858424}
   - component: {fileID: 683885725493858427}
-  - component: {fileID: 4505647101957438863}
+  - component: {fileID: 4061389792984375900}
   m_Layer: 0
   m_Name: Cheese
   m_TagString: Untagged
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4505647101957438863
+--- !u!114 &4061389792984375900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,10 +108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc5c5b0d2fe647149c0e365f073eb9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 0
   minionPrefab: {fileID: 1505842397944119382, guid: 5dd7cb52d51424f6eb54dedb3035fa95,
     type: 3}
   minionSpawnPoint: {fileID: 2859161689305129707}
-  team: 0
 --- !u!1 &8305643548042327851
 GameObject:
   m_ObjectHideFlags: 0

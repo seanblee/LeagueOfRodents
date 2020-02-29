@@ -23,6 +23,11 @@ public class Minion : Unit
         this.attackRange = (this.minionType == MinionType.Melee ? 2 : 5);
     }
 
+    private void Update()
+    {
+        RunDownLane();
+    }
+
     public Team GetTeam()
     {
         return this.team;
@@ -31,6 +36,9 @@ public class Minion : Unit
     public void SetTeam(Team team)
     {
         this.team = team;
+
+        // temp: set color of minion to match team color
+        this.GetComponent<Renderer>().material.color = (this.team == Team.Red ? Color.red : Color.blue);
     }
 
     public MinionType GetMinionType()
@@ -43,12 +51,20 @@ public class Minion : Unit
         this.minionType = minionType;
     }
 
-    public void Attack(Minion enemyMinion) // should be able to attack any entity
+    public void Attack(Entity enemy)
     {
         if(this.minionType == MinionType.Melee)
         {
             // run up to the enemy and ravage
-
+            if(Vector3.Distance(this.transform.position, enemy.transform.position) > attackRange) // if we aren't within attacking range
+            {
+                // gap close
+                this.transform.position = Vector3.MoveTowards(this.transform.position, enemy.transform.position, this.moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                // RAVAGE
+            }
         }
         else
         {
@@ -60,25 +76,47 @@ public class Minion : Unit
     {
         // run it down the lane towards the enemy nexus
 
+        Entity closestEnemy = ScanForEnemies();
+
+        if(closestEnemy != null) // if we see an enemy
+        {
+            Attack(closestEnemy); // ravage
+        }
+
     }
 
-    private void ScanForEnemies()
+
+    // Gets the closest enemy unity TODO: implement priority
+    private Entity ScanForEnemies()
     {
         // sphere cast and look for enemy minions/turrets/enemies
-        // priority should be minions > turrets > enemies
+        // priority should be minions > turrets > champions
 
         RaycastHit[] hitInfo = Physics.SphereCastAll(this.transform.position, this.visionRadius, this.transform.forward);
 
-        if(hitInfo.Length > 0)
+        Entity closestEnemyEntity = null;
+        if (hitInfo.Length > 0)
         {
-            foreach(RaycastHit hit in hitInfo) // loop through each object hit in the sphere cast
+            float distance = Mathf.Infinity; // distance set to max initially
+
+            // look for the closest enemy
+            foreach (RaycastHit hit in hitInfo)
             {
-                Minion curr_minion;
-                if((curr_minion = hit.transform.GetComponent<Minion>()) != null) // if we hit a minion
+                Entity curr_entity;
+                if((curr_entity = hit.transform.GetComponent<Entity>()) != null)
                 {
-                    Attack(curr_minion);
+                    if(curr_entity.team != this.team)
+                    {
+                        float distanceToTarget = Vector3.Distance(this.transform.position, hit.transform.position); // distance from us to curr entity
+                        if (distanceToTarget < distance)
+                        {
+                            distance = distanceToTarget;
+                            closestEnemyEntity = curr_entity;
+                        }
+                    }
                 }
             }
         }
+        return closestEnemyEntity;
     }
 }

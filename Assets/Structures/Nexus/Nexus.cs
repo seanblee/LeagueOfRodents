@@ -8,9 +8,6 @@ public class Nexus : Entity, INexus
     [SerializeField] GameObject minionPrefab; // reference to prefab object
     [SerializeField] Transform minionSpawnPoint;
 
-    [Header("Team Settings")]
-    [SerializeField] Team team; // which team the nexus belongs to (replace type with custom class/enum)
-
     private float nexusHealth;
     private float nexusCurrentHealth;
 
