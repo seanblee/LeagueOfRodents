@@ -28,19 +28,6 @@ public class Minion : Unit
         RunDownLane();
     }
 
-    public Team GetTeam()
-    {
-        return this.team;
-    }
-
-    public void SetTeam(Team team)
-    {
-        this.team = team;
-
-        // temp: set color of minion to match team color
-        this.GetComponent<Renderer>().material.color = (this.team == Team.Red ? Color.red : Color.blue);
-    }
-
     public MinionType GetMinionType()
     {
         return this.minionType;
@@ -53,18 +40,17 @@ public class Minion : Unit
 
     public void Attack(Entity enemy)
     {
-        if(this.minionType == MinionType.Melee)
+        float distToEnemy = Vector3.Distance(this.transform.position, enemy.transform.position);
+        // run up to the enemy and ravage
+        if (distToEnemy > attackRange) // if we aren't within attacking range
         {
-            // run up to the enemy and ravage
-            if(Vector3.Distance(this.transform.position, enemy.transform.position) > attackRange) // if we aren't within attacking range
-            {
-                // gap close
-                this.transform.position = Vector3.MoveTowards(this.transform.position, enemy.transform.position, this.moveSpeed * Time.deltaTime);
-            }
-            else
-            {
-                // RAVAGE
-            }
+            // gap close
+            this.transform.position = Vector3.MoveTowards(this.transform.position, enemy.transform.position, this.moveSpeed * Time.deltaTime);
+        }
+        if (this.minionType == MinionType.Melee && distToEnemy <= attackRange)
+        {
+            // RAVAGE
+            DealDamage(enemy);
         }
         else
         {
@@ -85,6 +71,10 @@ public class Minion : Unit
 
     }
 
+    private void DealDamage(Entity entity)
+    {
+        entity.TakeDamage(this.attackDamage);
+    }
 
     // Gets the closest enemy unity TODO: implement priority
     private Entity ScanForEnemies()
@@ -105,7 +95,7 @@ public class Minion : Unit
                 Entity curr_entity;
                 if((curr_entity = hit.transform.GetComponent<Entity>()) != null)
                 {
-                    if(curr_entity.team != this.team)
+                    if(curr_entity.Team != this.Team)
                     {
                         float distanceToTarget = Vector3.Distance(this.transform.position, hit.transform.position); // distance from us to curr entity
                         if (distanceToTarget < distance)

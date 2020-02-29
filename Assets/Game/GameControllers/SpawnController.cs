@@ -29,7 +29,7 @@ public class SpawnController : MonoBehaviour
         {
             case RodentType.Rat:
                 var rat = spawnRodent.AddComponent(typeof(Rat)) as Rat;
-                rat.team = Team.Red;
+                rat.Team = Team.Red;
                 break;
         }
     }
