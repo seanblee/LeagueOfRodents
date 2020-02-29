@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class RodentStatBarController : MonoBehaviour
 {
-    private IRodent rodent;
+    private Rodent rodent;
 
     private Quaternion mainCameraRotation;
 
@@ -27,7 +27,7 @@ public class RodentStatBarController : MonoBehaviour
 
     void Start()
     {
-        rodent = this.transform.parent.GetComponent<IRodent>();
+        rodent = this.transform.parent.GetComponent<Rodent>();
 
         mainCameraRotation = Camera.main.transform.rotation;
         textMesh = GameObject.Find("Username").GetComponent<TextMeshProUGUI>();
@@ -35,7 +35,7 @@ public class RodentStatBarController : MonoBehaviour
         expBar = GameObject.Find("UserExpBar").GetComponent<Image>();
         levelMesh = GameObject.Find("UserLevel").GetComponent<TextMeshProUGUI>();
 
-        textMesh.text = rodent.GetStatSheet().name;
+        textMesh.text = rodent.statSheet.name;
 
         // Define max xp level up chart in game stat controller, placeholder 100
         maxExp = 100;
@@ -43,10 +43,10 @@ public class RodentStatBarController : MonoBehaviour
 
     private void Update()
     {
-        maxHealth = rodent.GetHealth();
-        currentHealth = rodent.GetCurrentHealth();
-        currentExp = rodent.GetCurrentExp();
-        levelMesh.text = rodent.GetCurrentLevel().ToString();
+        maxHealth = rodent.health;
+        currentHealth = rodent.currentHealth;
+        currentExp = rodent.expCurrent;
+        levelMesh.text = rodent.level.ToString();
 
         healthBar.transform.localScale = new Vector3(currentHealth / maxHealth, 1, 1);
         expBar.transform.localScale = new Vector3(currentExp / maxExp, 1, 1);

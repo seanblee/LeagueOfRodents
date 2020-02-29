@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class RodentController : MonoBehaviour
 {
-    public IRodent rodent;
+    public Rodent rodent;
 
     public Camera rodentCamera;
 
@@ -20,19 +18,25 @@ public class RodentController : MonoBehaviour
         rodentAgent = GetComponentInParent<NavMeshAgent>();
     }
 
-    private void Start()
+    void Start()
     {
-        rodent = this.GetComponent<IRodent>();
+        rodent = this.GetComponent<Rodent>();
     }
 
     void Update()
     {
-        rodentAgent.speed = rodent.GetMovement();
+        rodentAgent.speed = rodent.movementSpeed;
 
         if (Input.GetMouseButtonDown(1))
         {
-            rodentAgent.SetDestination(GetPointUnderCursor());
+            var moveAction = new MoveAction(GetPointUnderCursor());
+            rodent.actionQueue.Enqueue(moveAction);
         }
+    }
+
+    public void MoveTo(Vector3 location)
+    {
+        rodentAgent.SetDestination(location);
     }
 
     private Vector3 GetPointUnderCursor()
