@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Rodent : MonoBehaviour
+public class Rodent : Entity
 {
     public StatSheet statSheet;
 

@@ -2,12 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Team
-{
-    Red,
-    Blue
-}
-public class Nexus : MonoBehaviour, INexus
+public class Nexus : Entity, INexus
 {
     [Header("Minion Settings")]
     [SerializeField] GameObject minionPrefab; // reference to prefab object
