@@ -1,11 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Action
-{
-    public ActionType actionType;
-}
+﻿using UnityEngine;
 
 public class MoveAction : Action
 {
@@ -18,7 +11,7 @@ public class MoveAction : Action
     }
 }
 
-public class StopAction: Action
+public class StopAction : Action
 {
     public StopAction()
     {
@@ -26,8 +19,13 @@ public class StopAction: Action
     }
 }
 
-public enum ActionType
+public class AttackAction : Action
 {
-    MoveAction,
-    StopAction
+    public Entity attackEntity;
+
+    public AttackAction(Entity attackEntity)
+    {
+        this.actionType = ActionType.AttackAction;
+        this.attackEntity = attackEntity;
+    }
 }

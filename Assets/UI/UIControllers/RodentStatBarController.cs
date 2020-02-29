@@ -34,7 +34,6 @@ public class RodentStatBarController : MonoBehaviour
         healthBar = GameObject.Find("UserHealthBar").GetComponent<Image>();
         expBar = GameObject.Find("UserExpBar").GetComponent<Image>();
         levelMesh = GameObject.Find("UserLevel").GetComponent<TextMeshProUGUI>();
-
         textMesh.text = rodent.statSheet.name;
 
         // Define max xp level up chart in game stat controller, placeholder 100

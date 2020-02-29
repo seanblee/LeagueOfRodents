@@ -36,7 +36,11 @@ public class RodentController : MonoBehaviour
                     var moveAction = new MoveAction(rh.point);
                     rodent.actionQueue.Enqueue(moveAction);
                     break;
-                case 
+                default:
+                    var attackEntity = rh.collider.gameObject.GetComponent<Entity>();
+                    var attackAction = new AttackAction(attackEntity);
+                    rodent.actionQueue.Enqueue(attackAction);
+                    break;
             }
             
         }

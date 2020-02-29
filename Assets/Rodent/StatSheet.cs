@@ -15,6 +15,8 @@ public class StatSheet
 
     public float baseAttackSpeed;
 
+    public float baseAttackRange;
+
     public float baseMovementSpeed;
 
     public float healthPerLevel;
