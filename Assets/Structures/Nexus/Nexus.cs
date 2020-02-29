@@ -2,41 +2,65 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Team
+{
+    Red,
+    Blue
+}
 public class Nexus : MonoBehaviour, INexus
 {
-    [Header("Minion Prefab")]
-    [SerializeField] GameObject _minion_prefab; // reference to prefab object
+    [Header("Minion Settings")]
+    [SerializeField] GameObject minionPrefab; // reference to prefab object
+    [SerializeField] Transform minionSpawnPoint;
 
-    [Space]
     [Header("Team Settings")]
-    [SerializeField] string _team; // which team the nexus belongs to (replace type with custom class/enum)
+    [SerializeField] Team team; // which team the nexus belongs to (replace type with custom class/enum)
 
-    private float _nexus_health;
-    private List<GameObject> _minions; // list of minions that belong to the nexus
+    private float nexusHealth;
+    private float nexusCurrentHealth;
 
     void Start()
     {
-        _minions = new List<GameObject>();    
+        this.nexusHealth = nexusCurrentHealth = 500; 
     }
 
-    public void SpawnMinion()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SpawnMinion(MinionType.Melee);
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            SpawnMinion(MinionType.Ranged);
+        }
+    }
+
+    public void SpawnMinion(MinionType minionType)
     {
         // instantiate a minion prefab at the world space origin
-        _minions.Add(Instantiate(_minion_prefab, Vector3.zero, Quaternion.identity));
+        GameObject newMinionGO = Instantiate(minionPrefab, this.minionSpawnPoint.position, Quaternion.identity);
+        Minion newMinion = newMinionGO.GetComponent<Minion>();
+        newMinion.SetTeam(this.team);
+        newMinion.SetMinionType(minionType);
     }
 
     public float GetNexusHealth()
     {
-        return _nexus_health;
+        return nexusCurrentHealth;
     }
 
-    public List<GameObject> GetNexusMinions()
+    public Team GetNexusTeam()
     {
-        return _minions;
+        return team;
     }
 
-    public string GetNexusTeam()
+    public void TakeDamage(float damage)
     {
-        return _team;
+        this.nexusCurrentHealth -= damage;
+        if(nexusCurrentHealth <= 0)
+        {
+            // TODO: die
+        }
     }
 }

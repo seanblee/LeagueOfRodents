@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
 public interface INexus
 {
-    void SpawnMinion();
+    void SpawnMinion(MinionType minionType);
 
     float GetNexusHealth();
 
-    List<GameObject> GetNexusMinions();
+    Team GetNexusTeam();
 
-    string GetNexusTeam();
+    void TakeDamage(float damage);
 }
