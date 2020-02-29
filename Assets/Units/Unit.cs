@@ -26,4 +26,9 @@ public class Unit : Entity
 
         isDead |= this.currentHealth <= 0;
     }
+
+    public float GetHealth()
+    {
+        return this.health;
+    }
 }

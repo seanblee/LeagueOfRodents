@@ -5,11 +5,13 @@ public class GenericHealthBar : MonoBehaviour
 {
     private Quaternion mainCameraRotation;
 
-    private Image healthBar;
+    [SerializeField] Image healthBar;
 
     private float maxHealth;
 
     private float currentHealth;
+
+    [SerializeField] Unit unit;
 
     void Start()
     {
@@ -18,7 +20,21 @@ public class GenericHealthBar : MonoBehaviour
 
     void Update()
     {
-        
+        maxHealth = unit.GetHealth();
+        currentHealth = unit.currentHealth;
+        if(currentHealth >= 0)
+        {
+            healthBar.transform.localScale = new Vector3(currentHealth / maxHealth, 1, 1);
+        }
+        else
+        {
+            healthBar.transform.localScale = Vector3.zero;
+        }
+
+        if(unit.isDead)
+        {
+            Destroy(unit.gameObject);
+        }
     }
 
     void LateUpdate()
