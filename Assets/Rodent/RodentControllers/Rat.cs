@@ -26,6 +26,9 @@ public class Rat : Rodent
                 var moveAction = action as MoveAction;
                 rodentController.MoveTo(moveAction.location);
                 break;
+            case ActionType.StopAction:
+                rodentController.MoveTo(rodentController.transform.position);
+                break;
         }
     }
     public void ReadStats()

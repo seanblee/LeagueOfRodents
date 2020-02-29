@@ -18,7 +18,16 @@ public class MoveAction : Action
     }
 }
 
+public class StopAction: Action
+{
+    public StopAction()
+    {
+        this.actionType = ActionType.StopAction;
+    }
+}
+
 public enum ActionType
 {
     MoveAction,
+    StopAction
 }

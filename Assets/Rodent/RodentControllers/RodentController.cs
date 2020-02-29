@@ -29,8 +29,21 @@ public class RodentController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            var moveAction = new MoveAction(GetPointUnderCursor());
-            rodent.actionQueue.Enqueue(moveAction);
+            var rh = GetPointUnderCursor();
+            switch (rh.collider.name)
+            {
+                case "Terrain":
+                    var moveAction = new MoveAction(rh.point);
+                    rodent.actionQueue.Enqueue(moveAction);
+                    break;
+                case 
+            }
+            
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            var stopAction = new StopAction();
+            rodent.actionQueue.Enqueue(stopAction);
         }
     }
 
@@ -39,12 +52,12 @@ public class RodentController : MonoBehaviour
         rodentAgent.SetDestination(location);
     }
 
-    private Vector3 GetPointUnderCursor()
+    private RaycastHit GetPointUnderCursor()
     {
         Vector3 mouseWorldPosition = rodentCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 40));
         RaycastHit hitPosition;
         Physics.Raycast(mouseWorldPosition, rodentCamera.transform.forward, out hitPosition, 100, groundLayer);
 
-        return hitPosition.point;
+        return hitPosition;
     }
 }
