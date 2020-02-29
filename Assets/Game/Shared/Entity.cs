@@ -2,5 +2,10 @@
 
 public class Entity : MonoBehaviour
 {
-    public Team team;
+    public Team Team { get; set; }
+
+    public virtual void TakeDamage(float damage)
+    {
+
+    }
 }

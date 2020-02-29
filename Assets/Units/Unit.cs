@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Unit : Entity
 {
-    protected float health;
+    public bool isDead;
 
     public float currentHealth;
+
+    protected float health;
 
     protected float attackDamage;
 
@@ -18,9 +20,7 @@ public class Unit : Entity
 
     protected float visionRadius;
 
-    public bool isDead;
-
-    public void TakeDamage(float damage)
+    public override void TakeDamage(float damage)
     {
         this.currentHealth -= damage;
 

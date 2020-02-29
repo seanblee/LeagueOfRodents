@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Nexus : Entity, INexus
+public class Nexus : Entity
 {
     [Header("Minion Settings")]
     [SerializeField] GameObject minionPrefab; // reference to prefab object
     [SerializeField] Transform minionSpawnPoint;
+
+    [Header("Team Settings")]
+    [SerializeField] Team setTeam;
 
     private float nexusHealth;
     private float nexusCurrentHealth;
 
     void Start()
     {
-        this.nexusHealth = nexusCurrentHealth = 500; 
+        this.nexusHealth = nexusCurrentHealth = 500;
+        this.Team = setTeam;
     }
 
     private void Update()
@@ -33,7 +37,9 @@ public class Nexus : Entity, INexus
         // instantiate a minion prefab at the world space origin
         GameObject newMinionGO = Instantiate(minionPrefab, this.minionSpawnPoint.position, Quaternion.identity);
         Minion newMinion = newMinionGO.GetComponent<Minion>();
-        newMinion.SetTeam(this.team);
+        newMinion.Team = this.Team;
+        // set team color
+        newMinion.transform.GetComponent<Renderer>().material.color = newMinion.Team == Team.Red ? Color.red : Color.blue;
         newMinion.SetMinionType(minionType);
     }
 
@@ -42,17 +48,8 @@ public class Nexus : Entity, INexus
         return nexusCurrentHealth;
     }
 
-    public Team GetNexusTeam()
-    {
-        return team;
-    }
-
-    public void TakeDamage(float damage)
+    public override void TakeDamage(float damage)
     {
         this.nexusCurrentHealth -= damage;
-        if(nexusCurrentHealth <= 0)
-        {
-            // TODO: die
-        }
     }
 }
