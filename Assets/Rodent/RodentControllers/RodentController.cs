@@ -58,9 +58,8 @@ public class RodentController : MonoBehaviour
 
     private RaycastHit GetPointUnderCursor()
     {
-        Vector3 mouseWorldPosition = rodentCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 40));
         RaycastHit hitPosition;
-        Physics.Raycast(mouseWorldPosition, rodentCamera.transform.forward, out hitPosition, 100, groundLayer);
+        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitPosition, 100, groundLayer);
 
         return hitPosition;
     }
