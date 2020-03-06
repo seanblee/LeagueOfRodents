@@ -315,8 +315,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5684000447319690234}
   - component: {fileID: -939253345165840341}
-  - component: {fileID: 5883165789231970689}
   - component: {fileID: 1371594519801739966}
+  - component: {fileID: 122174405258993731}
   m_Layer: 0
   m_Name: rat
   m_TagString: Untagged
@@ -332,7 +332,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8699540036790532585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.89563, y: 0, z: 10.993347}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1886019584805425712}
@@ -359,19 +359,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &5883165789231970689
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8699540036790532585}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.7366552, z: 3.5929704}
-  m_Center: {x: 0, y: 0.883986, z: -1.2246897}
 --- !u!195 &1371594519801739966
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -391,6 +378,19 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.75
-  m_BaseOffset: 0
+  m_BaseOffset: -0.25
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &122174405258993731
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8699540036790532585}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.7833781, z: 3.6202836}
+  m_Center: {x: 0, y: 1.1416891, z: 0.42198586}
