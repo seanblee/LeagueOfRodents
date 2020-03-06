@@ -68,9 +68,10 @@ public class Rat : Rodent
 
     private void RatFrenzy()
     {
-        this.transform.localScale += new Vector3(0.2f, 0, 0.2f);
-        this.attackRange += 0.5f;
-        this.attackSpeed = this.attackSpeed * 3;
+        var attackSpeedBuff = this.gameObject.AddComponent<AtkSpeedBuffEffect>();
+        attackSpeedBuff.rodent = this;
+        attackSpeedBuff.duration = 5;
+        attackSpeedBuff.startTime = 0;
     }
 
     public void ReadStats()
