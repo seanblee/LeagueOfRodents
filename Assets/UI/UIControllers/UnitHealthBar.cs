@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class GenericHealthBar : MonoBehaviour
+public class UnitHealthBar : MonoBehaviour
 {
-    private Quaternion mainCameraRotation;
-
     [SerializeField] Image healthBar;
+
+    [SerializeField] Unit unit;
 
     private float maxHealth;
 
     private float currentHealth;
-
-    [SerializeField] Unit unit;
+    
+    private Quaternion mainCameraRotation;
 
     void Start()
     {
@@ -20,21 +20,10 @@ public class GenericHealthBar : MonoBehaviour
 
     void Update()
     {
-        maxHealth = unit.GetHealth();
+        maxHealth = unit.health;
         currentHealth = unit.currentHealth;
-        if(currentHealth >= 0)
-        {
-            healthBar.transform.localScale = new Vector3(currentHealth / maxHealth, 1, 1);
-        }
-        else
-        {
-            healthBar.transform.localScale = Vector3.zero;
-        }
 
-        if(unit.isDead)
-        {
-            Destroy(unit.gameObject);
-        }
+        healthBar.transform.localScale = currentHealth >= 0 ? new Vector3(currentHealth / maxHealth, 1, 1) : Vector3.zero;
     }
 
     void LateUpdate()

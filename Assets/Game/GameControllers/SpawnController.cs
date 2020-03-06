@@ -5,32 +5,33 @@ using UnityEngine.AI;
 
 public class SpawnController : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject rodentPrefab;
+    [SerializeField] GameObject ratPrefab;
 
     void Awake()
     {
         SpawnRodent(RodentType.Rat);
     }
 
-    void Update()
-    {
-
-    }
-
     void SpawnRodent(RodentType rodentType)
     {
-        GameObject spawnRodent = Instantiate(rodentPrefab, new Vector3(0,0,0), Quaternion.identity);
+        GameObject spawnedRodent;
 
         switch (rodentType)
         {
             case RodentType.Rat:
-                var rat = spawnRodent.AddComponent(typeof(Rat)) as Rat;
+                spawnedRodent = Instantiate(ratPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                var rat = spawnedRodent.AddComponent(typeof(Rat)) as Rat;
                 rat.Team = Team.Red;
                 break;
+            default:
+                spawnedRodent = null;
+                break;
         }
-
-        var controller = spawnRodent.AddComponent(typeof(RodentController));
-        Camera.main.GetComponent<CameraController>().player = spawnRodent.transform; 
+        
+        if(spawnedRodent != null)
+        {
+            spawnedRodent.AddComponent(typeof(RodentController));
+            Camera.main.GetComponent<CameraController>().player = spawnedRodent.transform;
+        }
     }
 }

@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Unit : Entity
 {
-    public bool isDead;
-
     public float currentHealth;
 
-    protected float health;
+    public float health;
 
     protected float attackDamage;
 
@@ -24,11 +22,9 @@ public class Unit : Entity
     {
         this.currentHealth -= damage;
 
-        isDead |= this.currentHealth <= 0;
-    }
-
-    public float GetHealth()
-    {
-        return this.health;
+        if(this.currentHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
