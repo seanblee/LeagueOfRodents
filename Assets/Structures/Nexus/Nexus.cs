@@ -22,11 +22,11 @@ public class Nexus : Entity
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             SpawnMinion(MinionType.Melee);
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.R))
         {
             SpawnMinion(MinionType.Ranged);
         }

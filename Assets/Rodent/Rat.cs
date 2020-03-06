@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections;
+using System.IO;
 using UnityEngine;
 
 public class Rat : Rodent
@@ -36,6 +37,9 @@ public class Rat : Rodent
                 var attackAction = action as AttackAction;
                 Attack(attackAction.attackEntity);
                 break;
+            case ActionType.QSpellAction:
+                RatFrenzy();
+                break;
         }
     }
 
@@ -46,15 +50,27 @@ public class Rat : Rodent
             float distToEnemy = Vector3.Distance(this.transform.position, enemy.transform.position);
             if (distToEnemy > attackRange)
             {
+                nextDamageEvent = Time.time + 1 / attackSpeed;
                 rodentController.MoveTo(enemy.transform.position);
             }
             else
             {
                 rodentController.MoveTo(rodentController.transform.position);
-                enemy.TakeDamage(this.attackDamage);
+                if (Time.time >= nextDamageEvent)
+                {
+                    nextDamageEvent = Time.time + 1 / attackSpeed;
+                    enemy.TakeDamage(this.attackDamage);
+                }
             }
             this.actionQueue.Enqueue(new AttackAction(enemy));
         } 
+    }
+
+    public void RatFrenzy()
+    {
+        this.transform.localScale += new Vector3(0.2f, 0, 0.2f);
+        this.attackRange += 0.5f;
+        this.attackSpeed = this.attackSpeed * 3;
     }
 
     public void ReadStats()

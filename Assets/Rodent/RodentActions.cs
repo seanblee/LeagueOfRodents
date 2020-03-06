@@ -29,3 +29,14 @@ public class AttackAction : Action
         this.attackEntity = attackEntity;
     }
 }
+
+public class QSpellAction : Action
+{
+    public RaycastHit rh;
+    
+    public QSpellAction(RaycastHit rh)
+    {
+        this.actionType = ActionType.QSpellAction;
+        this.rh = rh;
+    }
+}

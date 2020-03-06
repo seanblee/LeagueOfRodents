@@ -30,6 +30,8 @@ public class Rodent : Entity
 
     public Queue<Action> actionQueue;
 
+    public float nextDamageEvent;
+
     void Start()
     {
         rodentController = this.GetComponent<RodentController>();
@@ -65,7 +67,7 @@ public class Rodent : Entity
         this.movementSpeed += statSheet.movementSpeedPerLevel;
     }
 
-    public void TakeDamage(float damage)
+    public override void TakeDamage(float damage)
     {
         if (currentHealth == 0)
         {

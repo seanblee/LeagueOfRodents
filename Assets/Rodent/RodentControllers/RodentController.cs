@@ -44,10 +44,14 @@ public class RodentController : MonoBehaviour
             }
             
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            var rh = GetPointUnderCursor();
+            rodent.actionQueue.Enqueue(new QSpellAction(rh));
+        }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            var stopAction = new StopAction();
-            rodent.actionQueue.Enqueue(stopAction);
+            rodent.actionQueue.Enqueue(new StopAction());
         }
     }
 
