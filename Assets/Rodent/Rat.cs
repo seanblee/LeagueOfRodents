@@ -66,7 +66,7 @@ public class Rat : Rodent
         } 
     }
 
-    public void RatFrenzy()
+    private void RatFrenzy()
     {
         this.transform.localScale += new Vector3(0.2f, 0, 0.2f);
         this.attackRange += 0.5f;
