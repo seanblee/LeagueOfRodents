@@ -158,9 +158,9 @@ GameObject:
   - component: {fileID: 1722342839046252908}
   - component: {fileID: 4969734024916184304}
   - component: {fileID: 7279228922999370390}
-  - component: {fileID: 3740261596412737657}
+  - component: {fileID: 1942826011071350593}
   m_Layer: 5
-  m_Name: HealthBar
+  m_Name: NexusHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3740261596412737657
+--- !u!114 &1942826011071350593
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,6 +256,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7451843168344169149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89239a709b0ac9140a2d03a2a03532b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 426473114d72e1c4ea9ca868693da98d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 677707854643918392}
+  nexus: {fileID: 0}

@@ -240,9 +240,9 @@ GameObject:
   - component: {fileID: 7662191781877159140}
   - component: {fileID: 4128505325944017272}
   - component: {fileID: 1780728732187545374}
-  - component: {fileID: 5646242216466302449}
+  - component: {fileID: 7478569910410575292}
   m_Layer: 5
-  m_Name: StatBar
+  m_Name: RodentHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5646242216466302449
+--- !u!114 &7478569910410575292
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -345,6 +345,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89239a709b0ac9140a2d03a2a03532b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rodent: {fileID: 0}
+  username: {fileID: 8491394480121633523}
+  level: {fileID: 5853563523821595600}
+  healthBar: {fileID: 8418596387510569904}
+  expBar: {fileID: 2780935993201372103}
 --- !u!1 &2002074002324289840
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +686,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 1000, y: 150}
+  m_SizeDelta: {x: 1000, y: 125}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &521296230589219133
 CanvasRenderer:

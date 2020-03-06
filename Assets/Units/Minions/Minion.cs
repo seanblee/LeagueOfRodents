@@ -19,7 +19,6 @@ public class Minion : Unit
         this.attackSpeed = 2;
         this.moveSpeed = 2;
         this.visionRadius = 5;
-        this.isDead = false;
         this.attackRange = (this.minionType == MinionType.Melee ? 2 : 5);
     }
 

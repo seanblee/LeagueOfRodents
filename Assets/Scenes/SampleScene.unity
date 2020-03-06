@@ -686,7 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9c270f4c707b84f910174f00b1e3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rodentPrefab: {fileID: 8699540036790532585, guid: ac30100fe08344343b5ff906cb5b2e23,
+  ratPrefab: {fileID: 8699540036790532585, guid: ac30100fe08344343b5ff906cb5b2e23,
     type: 3}
 --- !u!4 &1105235814
 Transform:

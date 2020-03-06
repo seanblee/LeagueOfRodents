@@ -11,12 +11,12 @@ public class Nexus : Entity
     [Header("Team Settings")]
     [SerializeField] Team setTeam;
 
-    private float nexusHealth;
-    private float nexusCurrentHealth;
+    public float health;
+    public float currentHealth;
 
     void Start()
     {
-        this.nexusHealth = nexusCurrentHealth = 500;
+        this.health = currentHealth = 500;
         this.Team = setTeam;
     }
 
@@ -43,13 +43,8 @@ public class Nexus : Entity
         newMinion.SetMinionType(minionType);
     }
 
-    public float GetNexusHealth()
-    {
-        return nexusCurrentHealth;
-    }
-
     public override void TakeDamage(float damage)
     {
-        this.nexusCurrentHealth -= damage;
+        this.currentHealth -= damage;
     }
 }

@@ -56,6 +56,13 @@ public class Rat : Rodent
             else
             {
                 rodentController.MoveTo(rodentController.transform.position);
+
+                Vector3 relativePos = enemy.transform.position - transform.position;
+
+                Quaternion lookTowards = Quaternion.LookRotation(relativePos);
+
+                transform.rotation = Quaternion.Lerp(transform.rotation, lookTowards, Time.deltaTime * 5f);
+
                 if (Time.time >= nextDamageEvent)
                 {
                     nextDamageEvent = Time.time + 1 / attackSpeed;
