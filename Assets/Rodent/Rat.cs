@@ -70,7 +70,7 @@ public class Rat : Rodent
     {
         var attackSpeedBuff = this.gameObject.AddComponent<AtkSpeedBuffEffect>();
         attackSpeedBuff.rodent = this;
-        attackSpeedBuff.duration = 3;
+        attackSpeedBuff.duration = 5;
         attackSpeedBuff.startTime = 0;
     }
 

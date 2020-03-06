@@ -20,7 +20,7 @@ public class RodentEffect : MonoBehaviour
     protected virtual void StopEffect()
     {
         CancelInvoke();
-        Destroy(gameObject);
+        Destroy(this);
     }
         
    
