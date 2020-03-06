@@ -11,5 +11,6 @@ public enum ActionType
 {
     MoveAction,
     StopAction,
-    AttackAction
+    AttackAction,
+    QSpellAction,
 }

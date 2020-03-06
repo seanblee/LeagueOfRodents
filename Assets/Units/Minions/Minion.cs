@@ -14,7 +14,7 @@ public class Minion : Unit
 
     void Start()
     {
-        this.health = this.currentHealth = 5;
+        this.health = this.currentHealth = 100;
         this.attackDamage = 2;
         this.attackSpeed = 2;
         this.moveSpeed = 2;
